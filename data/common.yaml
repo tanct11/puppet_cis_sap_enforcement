@@ -1,0 +1,99 @@
+---
+secure_linux_cis::banner: >
+  Authorized uses only. All activity may be monitored and reported.
+  
+
+secure_linux_cis::motd: 🐉 Module by Fervid 🐉
+
+secure_linux_cis::profile_type: server
+secure_linux_cis::enforcement_level: 1
+
+
+secure_linux_cis::default_firewalld_zone: drop
+secure_linux_cis::exclude_x_window_packages: []
+secure_linux_cis::client_alive_interval: 300
+secure_linux_cis::client_alive_count_max: 0
+secure_linux_cis::login_grace_time: 60
+secure_linux_cis::allow_users: []
+secure_linux_cis::allow_groups: []
+secure_linux_cis::deny_users: []
+secure_linux_cis::deny_groups: []
+secure_linux_cis::include_rules: []
+secure_linux_cis::exclude_rules: []
+secure_linux_cis::minlen: 14
+secure_linux_cis::dcredit: -1
+secure_linux_cis::ucredit: -1
+secure_linux_cis::ocredit: -1
+secure_linux_cis::lcredit: -1
+secure_linux_cis::attempts: 5
+secure_linux_cis::lockout_time: 900
+secure_linux_cis::past_passwords: 5
+secure_linux_cis::pass_max_days: 90
+secure_linux_cis::pass_min_days: 7
+secure_linux_cis::pass_warn_days: 7
+secure_linux_cis::pass_inactive_days: 30
+secure_linux_cis::timeout: 600
+
+secure_linux_cis::auto_restart: false
+secure_linux_cis::logging_host: ''
+secure_linux_cis::is_logging_host: false
+secure_linux_cis::exclude_logs: []
+secure_linux_cis::max_log_file: 32
+secure_linux_cis::max_auth_tries: 4
+secure_linux_cis::max_sessions: 4
+secure_linux_cis::max_startups: 10:30:60
+secure_linux_cis::time_sync: ntp
+secure_linux_cis::mta: postfix
+secure_linux_cis::mac: selinux
+secure_linux_cis::selinux_mode: enforcing
+secure_linux_cis::ipv6_enabled: false
+secure_linux_cis::approved_ciphers:
+  - aes256-gcm@openssh.com
+  - aes128-gcm@openssh.com
+  - aes128-ctr
+  - aes192-ctr
+  - aes256-ctr
+
+# secure_linux_cis::firewall_package: firewall
+# Exclude rules that need to be fixed
+secure_linux_cis::host_allow_rules:
+  - 'sshd: ALL'
+  - "ALL: %{facts.networking.network}/%{facts.networking.netmask}"
+
+secure_linux_cis::host_deny_rules:
+  - 'ALL: ALL'
+
+secure_linux_cis::hardening_schedule:
+  period: hourly
+  repeat: 2
+
+secure_linux_cis::approved_kex:
+  - curve25519-sha256
+  - diffie-hellman-group14-sha256
+  - diffie-hellman-group16-sha512
+  - ecdh-sha2-nistp256
+  - ecdh-sha2-nistp384
+  - ecdh-sha2-nistp521
+
+secure_linux_cis::approved_mac_algorithms:
+  - hmac-md5
+  - hmac-md5-96
+  - hmac-ripemd160
+  - hmac-sha1
+  - hmac-sha1-96
+  - umac-64@openssh.com
+  - hmac-md5-etm@openssh.com
+  - hmac-md5-96-etm@openssh.com
+  - hmac-ripemd160-etm@openssh.com
+  - hmac-sha1-etm@openssh.com
+  - hmac-sha1-96-etm@openssh.com
+  - umac-64-etm@openssh.com
+  - umac-128-etm@openssh.com
+
+secure_linux_cis::approved_ciphers:
+  - chacha20-poly1305@openssh.com
+  - aes256-gcm@openssh.com
+  - aes128-gcm@openssh.com
+  - aes256-ctr
+  - aes192-ctr
+  - aes128-ctr
