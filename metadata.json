@@ -1,0 +1,164 @@
+{
+  "name": "fervid-secure_linux_cis",
+  "version": "4.0.0",
+  "author": "Fervid",
+  "summary": "This module hardens Linux servers to CIS security compliance",
+  "license": "Apache-2.0",
+  "source": "https://github.com/fervidus/secure_linux_cis.git",
+  "project_page": "https://github.com/fervidus/secure_linux_cis",
+  "issues_url": "https://github.com/fervidus/secure_linux_cis/issues",
+  "dependencies": [
+    {
+      "name": "puppet/chrony",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "camptocamp/augeas",
+      "version_requirement": ">= 1.8.0 < 2.0.0"
+    },
+    {
+      "name": "puppet/kmod",
+      "version_requirement": ">= 3.0.0 < 4.0.0"
+    },
+    {
+      "name": "puppet/postfix",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "puppet/augeasproviders_core",
+      "version_requirement": ">= 3.2.0 < 4.0.0"
+    },
+    {
+      "name": "puppet/augeasproviders_grub",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    },
+    {
+      "name": "herculesteam/augeasproviders_sysctl",
+      "version_requirement": ">= 2.6.2 < 3.0.0"
+    },
+    {
+      "name": "puppet/augeasproviders_shellvar",
+      "version_requirement": ">= 5.0.0 < 6.0.0"
+    },
+    {
+      "name": "puppet/augeasproviders_pam",
+      "version_requirement": ">= 3.0.1 < 4.0.0"
+    },
+    {
+      "name": "ubeek/auditd",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    },
+    {
+      "name": "puppet/alternatives",
+      "version_requirement": ">= 2.0.0 < 4.0.0"
+    },
+    {
+      "name": "puppet/cron",
+      "version_requirement": ">= 1.3.0 < 3.0.0"
+    },
+    {
+      "name": "puppet/firewalld",
+      "version_requirement": ">= 4.3.0 < 5.0.0"
+    },
+    {
+      "name": "puppet/logrotate",
+      "version_requirement": ">= 4.0.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs/augeas_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs/firewall",
+      "version_requirement": ">= 1.15.3 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 5.0.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs/mailalias_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs/mount_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs/ntp",
+      "version_requirement": ">= 8.0.0 < 9.0.0"
+    },
+    {
+      "name": "puppetlabs/reboot",
+      "version_requirement": ">= 1.0.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.0.0 <= 7.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Amazon",
+      "operatingsystemrelease": [
+        "2022"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "10",
+        "11"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "15"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "18.04",
+        "20.04",
+        "22.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 5.0.0 < 7.0.0"
+    }
+  ],
+  "pdk-version": "2.5.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#2.5.0",
+  "template-ref": "tags/2.5.0-0-g369d483"
+}
