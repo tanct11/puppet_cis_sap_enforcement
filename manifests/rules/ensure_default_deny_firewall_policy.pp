@@ -18,23 +18,7 @@ class secure_linux_cis::rules::ensure_default_deny_firewall_policy {
         tag    => 'cis_firewall_post',
       }
     }
-    'nftables': {
-      # Addressed in nftables module
-      # nftables::rule { 'INPUT-default':
-      #   order   => '01',
-      #   content => 'type filter hook input priority 0; policy drop;',
-      # }
 
-      # nftables::rule { 'OUTPUT-default':
-      #   order   => '01',
-      #   content => 'type filter hook output priority 0; policy drop;',
-      # }
-
-      # nftables::rule { 'FORWARD-default':
-      #   order   => '01',
-      #   content => 'type filter hook forward priority 0; policy drop;',
-      # }
-    }
     default: { file('Need iptables or nftables firewall.') }
   }
-}
+
