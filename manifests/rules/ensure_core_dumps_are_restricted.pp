@@ -9,7 +9,9 @@ class secure_linux_cis::rules::ensure_core_dumps_are_restricted {
     match => '^* hard core ',
   }
 
-  sysctl { 'fs.suid_dumpable':
-    value    => 0,
+  exec { 'systemctl is-enabled coredump.service':
+    command   => "systemctl is-enabled coredump.service",
+    path      => ['/usr/bin', '/usr/sbin',],
+    logoutput => true,
   }
 }
