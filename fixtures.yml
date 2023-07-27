@@ -1,0 +1,42 @@
+# This file can be used to install module dependencies for unit testing
+# See https://github.com/puppetlabs/puppetlabs_spec_helper#using-fixtures
+# for details
+---
+fixtures:
+  forge_modules:
+    alternatives: "puppet-alternatives"
+    apt: "puppetlabs-apt"
+    auditd: "ubeek-auditd"
+    augeas: "camptocamp-augeas"
+    augeas_core: "puppetlabs-augeas_core"
+    augeasproviders_core: "puppet-augeasproviders_core"
+    augeasproviders_grub: "puppet-augeasproviders_grub"
+    augeasproviders_pam: "puppet-augeasproviders_pam"
+    augeasproviders_shellvar: "puppet-augeasproviders_shellvar"
+    augeasproviders_sysctl: "herculesteam-augeasproviders_sysctl"
+    chrony: "puppet-chrony"
+    cron: "puppet-cron"
+    exec: "puppetlabs-exec"
+    facts: "puppetlabs-facts"
+    firewall: "puppetlabs-firewall"
+    firewalld: 'puppet-firewalld'
+    inifile: 'puppetlabs-inifile'
+    kmod: "puppet-kmod"
+    lvm: 'puppetlabs-lvm'
+    logrotate: "puppet-logrotate"
+    mailalias_core: "puppetlabs-mailalias_core"
+    mount_core: "puppetlabs-mount_core"
+    ntp: "puppetlabs-ntp"
+    package: "puppetlabs-package"
+    reboot: "puppetlabs-reboot"
+    selinux: "puppet-selinux"
+    service: "puppetlabs-service"
+    stdlib: "puppetlabs-stdlib"
+    systemd: "puppet-systemd"
+    provision: "puppetlabs-provision"
+    ufw: 'kogitoapp/ufw'
+  repositories:
+    postfix:
+      repo: "https://github.com/fervidus/puppet-postfix.git"
+      branch: "master"
+    provision: 'https://github.com/puppetlabs/provision.git'
