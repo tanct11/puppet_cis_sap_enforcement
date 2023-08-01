@@ -2,7 +2,6 @@
 secure_linux_cis::rules::ensure_gpgcheck_is_globally_activated::package_configuration: /etc/zypp/zypp.conf
 
 secure_linux_cis::server_level_1:
-- ensure_mounting_of_udf_filesystems_is_disabled
 - ensure_tmp_is_configured
 - ensure_noexec_option_set_on_tmp_partition
 - ensure_nodev_option_set_on_tmp_partition
@@ -17,8 +16,6 @@ secure_linux_cis::server_level_1:
 - ensure_sudo_is_installed
 - ensure_sudo_commands_use_pty
 - ensure_sudo_log_file_exists
-- ensure_aide_is_installed
-- ensure_filesystem_integrity_is_regularly_checked
 - ensure_bootloader_password_is_set
 - ensure_permissions_on_bootloader_config_are_configured
 - ensure_authentication_required_for_single_user_mode
@@ -59,7 +56,6 @@ secure_linux_cis::server_level_1:
 - ensure_rsh_client_is_not_installed
 - ensure_talk_client_is_not_installed
 - ensure_telnet_client_is_not_installed
-- ensure_ldap_client_is_not_installed
 - ensure_ip_forwarding_is_disabled
 - ensure_packet_redirect_sending_is_disabled
 - ensure_source_routed_packets_are_not_accepted
@@ -78,11 +74,9 @@ secure_linux_cis::server_level_1:
 - ensure_iptables_package_is_installed
 - ensure_default_deny_firewall_policy
 - ensure_loopback_traffic_is_configured
-- ensure_firewall_rules_exist_for_all_open_ports
 - ensure_rsyslog_is_installed
 - ensure_rsyslog_service_is_enabled_and_running
 - ensure_rsyslog_default_file_permissions_configured
-- ensure_rsyslog_is_configured_to_send_logs_to_a_remote_log_host
 - ensure_journald_is_configured_to_send_logs_to_rsyslog
 - ensure_journald_is_configured_to_compress_large_log_files
 - ensure_journald_is_configured_to_write_logfiles_to_persistent_disk
@@ -99,7 +93,6 @@ secure_linux_cis::server_level_1:
 - ensure_permissions_on_etc_ssh_sshd_config_are_configured
 - ensure_permissions_on_ssh_private_host_key_files_are_configured
 - ensure_permissions_on_ssh_public_host_key_files_are_configured
-- ensure_ssh_access_is_limited
 - ensure_ssh_loglevel_is_appropriate
 - ensure_ssh_ignorerhosts_is_enabled
 - ensure_ssh_hostbasedauthentication_is_disabled
@@ -118,7 +111,6 @@ secure_linux_cis::server_level_1:
 - ensure_password_creation_requirements_are_configured
 - ensure_lockout_for_failed_password_attempts_is_configured
 - ensure_password_reuse_is_limited
-- ensure_minimum_days_between_password_changes_is_configured
 - ensure_all_users_last_password_change_date_is_in_the_past
 - ensure_system_accounts_are_secured
 - ensure_default_user_shell_timeout_is_configured
@@ -151,8 +143,6 @@ secure_linux_cis::server_level_1:
 - ensure_shadow_group_is_empty
 secure_linux_cis::server_level_2:
 - ensure_mounting_of_squashfs_filesystems_is_disabled
-- ensure_mounting_of_udf_filesystems_is_disabled
-- ensure_mounting_of_fat_filesystems_is_limited
 - ensure_tmp_is_configured
 - ensure_noexec_option_set_on_tmp_partition
 - ensure_nodev_option_set_on_tmp_partition
@@ -176,8 +166,6 @@ secure_linux_cis::server_level_2:
 - ensure_sudo_is_installed
 - ensure_sudo_commands_use_pty
 - ensure_sudo_log_file_exists
-- ensure_aide_is_installed
-- ensure_filesystem_integrity_is_regularly_checked
 - ensure_bootloader_password_is_set
 - ensure_permissions_on_bootloader_config_are_configured
 - ensure_authentication_required_for_single_user_mode
@@ -219,7 +207,6 @@ secure_linux_cis::server_level_2:
 - ensure_rsh_client_is_not_installed
 - ensure_talk_client_is_not_installed
 - ensure_telnet_client_is_not_installed
-- ensure_ldap_client_is_not_installed
 - ensure_ip_forwarding_is_disabled
 - ensure_packet_redirect_sending_is_disabled
 - ensure_source_routed_packets_are_not_accepted
@@ -240,12 +227,10 @@ secure_linux_cis::server_level_2:
 - ensure_iptables_package_is_installed
 - ensure_default_deny_firewall_policy
 - ensure_loopback_traffic_is_configured
-- ensure_firewall_rules_exist_for_all_open_ports
 - ensure_auditd_is_installed
 - ensure_auditd_service_is_enabled_and_running
 - ensure_auditing_for_processes_that_start_prior_to_auditd_is_enabled
 - ensure_audit_log_storage_size_is_configured
-- ensure_audit_logs_are_not_automatically_deleted
 - ensure_system_is_disabled_when_audit_logs_are_full
 - ensure_audit_backlog_limit_is_sufficient
 - ensure_events_that_modify_date_and_time_information_are_collected
@@ -266,7 +251,6 @@ secure_linux_cis::server_level_2:
 - ensure_rsyslog_is_installed
 - ensure_rsyslog_service_is_enabled_and_running
 - ensure_rsyslog_default_file_permissions_configured
-- ensure_rsyslog_is_configured_to_send_logs_to_a_remote_log_host
 - ensure_journald_is_configured_to_send_logs_to_rsyslog
 - ensure_journald_is_configured_to_compress_large_log_files
 - ensure_journald_is_configured_to_write_logfiles_to_persistent_disk
@@ -283,7 +267,6 @@ secure_linux_cis::server_level_2:
 - ensure_permissions_on_etc_ssh_sshd_config_are_configured
 - ensure_permissions_on_ssh_private_host_key_files_are_configured
 - ensure_permissions_on_ssh_public_host_key_files_are_configured
-- ensure_ssh_access_is_limited
 - ensure_ssh_loglevel_is_appropriate
 - ensure_ssh_ignorerhosts_is_enabled
 - ensure_ssh_hostbasedauthentication_is_disabled
@@ -303,7 +286,6 @@ secure_linux_cis::server_level_2:
 - ensure_password_creation_requirements_are_configured
 - ensure_lockout_for_failed_password_attempts_is_configured
 - ensure_password_reuse_is_limited
-- ensure_minimum_days_between_password_changes_is_configured
 - ensure_all_users_last_password_change_date_is_in_the_past
 - ensure_system_accounts_are_secured
 - ensure_default_user_shell_timeout_is_configured
@@ -344,7 +326,6 @@ secure_linux_cis::server_level_2:
 - ensure_no_ungrouped_files_or_directories_exist
 - ensure_shadow_group_is_empty
 secure_linux_cis::workstation_level_1:
-- ensure_mounting_of_udf_filesystems_is_disabled
 - ensure_tmp_is_configured
 - ensure_noexec_option_set_on_tmp_partition
 - ensure_nodev_option_set_on_tmp_partition
@@ -358,8 +339,6 @@ secure_linux_cis::workstation_level_1:
 - ensure_sudo_is_installed
 - ensure_sudo_commands_use_pty
 - ensure_sudo_log_file_exists
-- ensure_aide_is_installed
-- ensure_filesystem_integrity_is_regularly_checked
 - ensure_bootloader_password_is_set
 - ensure_permissions_on_bootloader_config_are_configured
 - ensure_authentication_required_for_single_user_mode
@@ -398,7 +377,6 @@ secure_linux_cis::workstation_level_1:
 - ensure_rsh_client_is_not_installed
 - ensure_talk_client_is_not_installed
 - ensure_telnet_client_is_not_installed
-- ensure_ldap_client_is_not_installed
 - ensure_ip_forwarding_is_disabled
 - ensure_packet_redirect_sending_is_disabled
 - ensure_source_routed_packets_are_not_accepted
@@ -417,11 +395,9 @@ secure_linux_cis::workstation_level_1:
 - ensure_iptables_package_is_installed
 - ensure_default_deny_firewall_policy
 - ensure_loopback_traffic_is_configured
-- ensure_firewall_rules_exist_for_all_open_ports
 - ensure_rsyslog_is_installed
 - ensure_rsyslog_service_is_enabled_and_running
 - ensure_rsyslog_default_file_permissions_configured
-- ensure_rsyslog_is_configured_to_send_logs_to_a_remote_log_host
 - ensure_journald_is_configured_to_send_logs_to_rsyslog
 - ensure_journald_is_configured_to_compress_large_log_files
 - ensure_journald_is_configured_to_write_logfiles_to_persistent_disk
@@ -438,7 +414,6 @@ secure_linux_cis::workstation_level_1:
 - ensure_permissions_on_etc_ssh_sshd_config_are_configured
 - ensure_permissions_on_ssh_private_host_key_files_are_configured
 - ensure_permissions_on_ssh_public_host_key_files_are_configured
-- ensure_ssh_access_is_limited
 - ensure_ssh_loglevel_is_appropriate
 - ensure_ssh_ignorerhosts_is_enabled
 - ensure_ssh_hostbasedauthentication_is_disabled
@@ -457,7 +432,6 @@ secure_linux_cis::workstation_level_1:
 - ensure_password_creation_requirements_are_configured
 - ensure_lockout_for_failed_password_attempts_is_configured
 - ensure_password_reuse_is_limited
-- ensure_minimum_days_between_password_changes_is_configured
 - ensure_all_users_last_password_change_date_is_in_the_past
 - ensure_system_accounts_are_secured
 - ensure_default_user_shell_timeout_is_configured
@@ -490,8 +464,6 @@ secure_linux_cis::workstation_level_1:
 - ensure_shadow_group_is_empty
 secure_linux_cis::workstation_level_2:
 - ensure_mounting_of_squashfs_filesystems_is_disabled
-- ensure_mounting_of_udf_filesystems_is_disabled
-- ensure_mounting_of_fat_filesystems_is_limited
 - ensure_tmp_is_configured
 - ensure_noexec_option_set_on_tmp_partition
 - ensure_nodev_option_set_on_tmp_partition
@@ -515,8 +487,6 @@ secure_linux_cis::workstation_level_2:
 - ensure_sudo_is_installed
 - ensure_sudo_commands_use_pty
 - ensure_sudo_log_file_exists
-- ensure_aide_is_installed
-- ensure_filesystem_integrity_is_regularly_checked
 - ensure_bootloader_password_is_set
 - ensure_permissions_on_bootloader_config_are_configured
 - ensure_authentication_required_for_single_user_mode
@@ -558,7 +528,6 @@ secure_linux_cis::workstation_level_2:
 - ensure_rsh_client_is_not_installed
 - ensure_talk_client_is_not_installed
 - ensure_telnet_client_is_not_installed
-- ensure_ldap_client_is_not_installed
 - ensure_ip_forwarding_is_disabled
 - ensure_packet_redirect_sending_is_disabled
 - ensure_source_routed_packets_are_not_accepted
@@ -579,12 +548,10 @@ secure_linux_cis::workstation_level_2:
 - ensure_iptables_package_is_installed
 - ensure_default_deny_firewall_policy
 - ensure_loopback_traffic_is_configured
-- ensure_firewall_rules_exist_for_all_open_ports
 - ensure_auditd_is_installed
 - ensure_auditd_service_is_enabled_and_running
 - ensure_auditing_for_processes_that_start_prior_to_auditd_is_enabled
 - ensure_audit_log_storage_size_is_configured
-- ensure_audit_logs_are_not_automatically_deleted
 - ensure_system_is_disabled_when_audit_logs_are_full
 - ensure_audit_backlog_limit_is_sufficient
 - ensure_events_that_modify_date_and_time_information_are_collected
@@ -605,7 +572,6 @@ secure_linux_cis::workstation_level_2:
 - ensure_rsyslog_is_installed
 - ensure_rsyslog_service_is_enabled_and_running
 - ensure_rsyslog_default_file_permissions_configured
-- ensure_rsyslog_is_configured_to_send_logs_to_a_remote_log_host
 - ensure_journald_is_configured_to_send_logs_to_rsyslog
 - ensure_journald_is_configured_to_compress_large_log_files
 - ensure_journald_is_configured_to_write_logfiles_to_persistent_disk
@@ -622,7 +588,6 @@ secure_linux_cis::workstation_level_2:
 - ensure_permissions_on_etc_ssh_sshd_config_are_configured
 - ensure_permissions_on_ssh_private_host_key_files_are_configured
 - ensure_permissions_on_ssh_public_host_key_files_are_configured
-- ensure_ssh_access_is_limited
 - ensure_ssh_loglevel_is_appropriate
 - ensure_ssh_ignorerhosts_is_enabled
 - ensure_ssh_hostbasedauthentication_is_disabled
@@ -642,7 +607,6 @@ secure_linux_cis::workstation_level_2:
 - ensure_password_creation_requirements_are_configured
 - ensure_lockout_for_failed_password_attempts_is_configured
 - ensure_password_reuse_is_limited
-- ensure_minimum_days_between_password_changes_is_configured
 - ensure_all_users_last_password_change_date_is_in_the_past
 - ensure_system_accounts_are_secured
 - ensure_default_user_shell_timeout_is_configured
