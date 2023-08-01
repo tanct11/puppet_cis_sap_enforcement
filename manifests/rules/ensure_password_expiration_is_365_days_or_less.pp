@@ -14,21 +14,11 @@
 #
 class secure_linux_cis::rules::ensure_password_expiration_is_365_days_or_less {
   # validate parameter
-  if $secure_linux_cis::pass_max_days > 365 {
-    fail('PASS_MAX_DAYS should be set to a value less than 365')
-  }
+ 
   file_line { 'password expiration policy':
     ensure => present,
     path   => '/etc/login.defs',
-    line   => "PASS_MAX_DAYS ${secure_linux_cis::pass_max_days}",
+    line   => "PASS_MAX_DAYS 365",
     match  => '^#?PASS_MAX_DAYS',
-  }
-  # local_users fact may be undef
-  $local_users = pick($facts['local_users'], {})
-  $local_users.each |String $user, Hash $attributes| {
-    if $attributes['password_expires_days'] != 'never' and
-    $attributes['max_days_between_password_change'] != $secure_linux_cis::pass_max_days {
-      exec { "/usr/bin/chage --maxdays ${secure_linux_cis::pass_max_days} ${user}": }
-    }
   }
 }
