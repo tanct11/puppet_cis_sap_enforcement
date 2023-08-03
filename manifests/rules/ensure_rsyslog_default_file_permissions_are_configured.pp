@@ -7,5 +7,9 @@ class secure_linux_cis::rules::ensure_rsyslog_default_file_permissions_are_confi
     ensure => file,
     mode   => 'u-x,g-wx,o-rwx',
   }
-  ~> Service['rsyslog']
+   file { '/etc/rsyslog.d':
+    ensure  => directory,
+    recurse => true,
+    mode    => '0640',
+  }
 }
