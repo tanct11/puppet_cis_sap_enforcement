@@ -6,27 +6,27 @@ class secure_linux_cis::rules::ensure_events_that_modify_date_and_time_informati
   # 64 bit architecture
     file_line { 'audit.rules time 1':
       ensure => present,
-      path   => '/etc/audit/rules.d/audit.rules',
+      path   => '/etc/audit/rules.d/cis_hardening.rules',
       line   => '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change',
     }
     file_line { 'audit.rules time 2':
       ensure => present,
-      path   => '/etc/audit/rules.d/audit.rules',
+      path   => '/etc/audit/rules.d/cis_hardening.rules',
       line   => '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change',
     }
     file_line { 'audit.rules time 3':
       ensure => present,
-      path   => '/etc/audit/rules.d/audit.rules',
+      path   => '/etc/audit/rules.d/cis_hardening.rules',
       line   => '-a always,exit -F arch=b64 -S clock_settime -k time-change',
     }
     file_line { 'audit.rules time 4':
       ensure => present,
-      path   => '/etc/audit/rules.d/audit.rules',
+      path   => '/etc/audit/rules.d/cis_hardening.rules',
       line   => '-a always,exit -F arch=b32 -S clock_settime -k time-change',
     }
     file_line { 'audit.rules time 5':
       ensure => present,
-      path   => '/etc/audit/rules.d/audit.rules',
+      path   => '/etc/audit/rules.d/cis_hardening.rules',
       line   => '-w /etc/localtime -p wa -k time-change',
     }
   }
