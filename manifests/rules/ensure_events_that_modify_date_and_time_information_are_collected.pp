@@ -3,8 +3,6 @@
 # @summary Ensure events that modify date and time information are collected 
 #
 class secure_linux_cis::rules::ensure_events_that_modify_date_and_time_information_are_collected {
-  Class['secure_linux_cis::rules::ensure_events_that_modify_date_and_time_information_are_collected']
-  ~> Class['secure_linux_cis::reboot']
   # 64 bit architecture
   if $facts['os']['architecture'] =~ /64/ {
     file_line { 'audit.rules time 1':
