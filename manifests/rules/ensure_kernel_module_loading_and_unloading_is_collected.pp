@@ -24,9 +24,4 @@ class secure_linux_cis::rules::ensure_kernel_module_loading_and_unloading_is_col
       path   => '/etc/audit/rules.d/cis_hardening.rules',
       line   => '-a always,exit -F arch=b64 -S init_module -S delete_module -k modules',
     }
-    file_line { 'audit.rules kernel module 5':
-      ensure => present,
-      path   => '/etc/audit/rules.d/cis_hardening.rules',
-      line   => '-a always,exit -F arch=b32 -S init_module -S delete_module -k modules',
-    }
 }
