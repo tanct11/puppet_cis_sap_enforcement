@@ -1,4 +1,4 @@
-class  ensure_SSH_X11 _forwarding_is_disabled {
+class secure_linux_cis::rules::ensure_SSH_X11_forwarding_is_disabled {
         file_line { 'ensure_SSH_X11 _forwarding_is_disabled' :
                 ensure => present,
                 path   => '/etc/ssh/sshd_config',
