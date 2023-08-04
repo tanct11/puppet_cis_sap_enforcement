@@ -1,4 +1,4 @@
-class secure_linux_cis::rules::CIS_TSS_SUSE15 {
+class secure_linux_cis::rules::cis_tss_suse15 {
 #1.1.1.2 Ensure mounting of udf filesystems is disabled
   file_line { 'Disable udf':
     ensure  => present,
