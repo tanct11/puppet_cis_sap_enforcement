@@ -1,0 +1,71 @@
+class secure_linux_cis::rules::CIS_TSS_SUSE15 {
+#1.1.1.2 Ensure mounting of udf filesystems is disabled
+  file_line { 'Disable udf':
+    ensure  => present,
+    path    => '/etc/modprobe.d/filesystem_disable.conf',
+    line    => 'install udf /bin/true',
+    match   => 'install udf /bin/false',
+  }
+
+  exec { '/usr/sbin/modprobe -r udf':
+    command     => 'modprobe -r udf',
+    path        => ['/usr/bin', '/usr/sbin',],
+    logoutput   => true,
+  }
+
+
+#1.1.1.3 Ensure mounting of FAT filesystems is limited
+  file_line { 'Disable FAT':
+    ensure  => present,
+    path    => '/etc/modprobe.d/fat.conf',
+    line    => 'install fat /bin/true',
+    match   => 'install fat /bin/false',
+  }
+
+   file_line { 'Disable FAT 2':
+    ensure  => present,
+    path    => '/etc/modprobe.d/fat.conf',
+    line    => 'install vfat /bin/true',
+    match   => 'install vfat /bin/false',
+  }
+
+   file_line { 'Disable FAT 3':
+    ensure  => present,
+    path    => '/etc/modprobe.d/fat.conf',
+    line    => 'install msdos /bin/true',
+    match   => 'install msdos /bin/false',
+  }
+
+  exec { '/usr/sbin/modprobe -r udf':
+    command     => 'modprobe -r msdos;
+                    modprobe -r vfat;
+                    modprobe -r fat;',
+    path        => ['/usr/bin', '/usr/sbin',],
+    logoutput   => true,
+  }
+
+ #1.4.1 Ensure AIDE is installed
+      exec { 'ensure_aide_is_installed':
+        command   => 'zypper install aide;
+                      aide --init;
+                      mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db',
+        path        => ['/usr/bin', '/usr/sbin',],
+        logoutput => true,
+      }
+
+ #1.4.2 Ensure filesystem integrity is regularly checked
+      exec { 'ensure_filesystem_integrity_is_regularly_checked':
+        command   => 'crontab -u root -e',
+        path      => ['/usr/bin', '/usr/sbin',],
+        logoutput => true,
+      }
+
+      file_line { 'ensure_filesystem_integrity_is_regularly_checked2':
+        ensure  => present,
+        path    => '/etc/crontab',
+        line    => '0 5 * * * /usr/sbin/aide --check',
+
+    
+
+  
+}
