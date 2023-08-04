@@ -7,6 +7,6 @@ class secure_linux_cis::rules::ensure_audit_backlog_limit_is_sufficient {
     ensure   => present,
     path     => '/boot/grub2/grub.cfg',
     line     => 'audit_backlog_limit=32768',
-    match    => "^(audit_backlog_limit=[0-9]$)",
+    match    => "^(audit_backlog_limit=[0-9]+$)",
   }
 }
