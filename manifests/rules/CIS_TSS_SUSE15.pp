@@ -65,6 +65,27 @@ class secure_linux_cis::rules::CIS_TSS_SUSE15 {
         path    => '/etc/crontab',
         line    => '0 5 * * * /usr/sbin/aide --check',
 
+ #2.3.5 Ensure LDAP client is not installed
+      package { ['openldap-clients']:
+        ensure   => present,
+      }
+    }
+
+ #4.1.2.2 Ensure audit logs are not automatically deleted
+     file_line { 'max_log_file_action':
+       ensure => present,
+       path   => '/etc/audit/auditd.conf',
+       line   => 'max_log_file_action = keep_logs',
+       match  => '^max_log_file_action',
+  }
+
+ #4.2.1.5 Ensure rsyslog is configured to send logs to a remote log host
+     file_line { 'rsyslog.conf logging_host':
+       ensure => present,
+       path   => '/etc/rsyslog.conf',
+       line   => "*.* @@${secure_linux_cis::logging_host}",
+       match  => '\*\.\* @@',
+    }
     
 
   
