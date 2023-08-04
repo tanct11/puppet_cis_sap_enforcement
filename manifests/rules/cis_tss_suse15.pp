@@ -64,11 +64,11 @@ class secure_linux_cis::rules::cis_tss_suse15 {
         ensure  => present,
         path    => '/etc/crontab',
         line    => '0 5 * * * /usr/sbin/aide --check',
+        }
 
  #2.3.5 Ensure LDAP client is not installed
       package { ['openldap-clients']:
         ensure   => present,
-      }
     }
 
  #4.1.2.2 Ensure audit logs are not automatically deleted
@@ -85,8 +85,5 @@ class secure_linux_cis::rules::cis_tss_suse15 {
        path   => '/etc/rsyslog.conf',
        line   => "*.* @@${secure_linux_cis::logging_host}",
        match  => '\*\.\* @@',
-    }
-    
-
-  
+    }  
 }
