@@ -3,6 +3,6 @@ class  ensure_SSH_MaxAuthTries_is_set_to_4_or_less {
                 ensure => present,
                 path   => '/etc/ssh/sshd_config',
                 line   => 'maxauthtries 4',
-                match  => "^(maxauthtries=[0-9]+$)",
+                match  => "^(maxauthtries.+$)",
   }
 }
