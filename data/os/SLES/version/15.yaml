@@ -2,6 +2,7 @@
 secure_linux_cis::rules::ensure_gpgcheck_is_globally_activated::package_configuration: /etc/zypp/zypp.conf
 
 secure_linux_cis::server_level_1:
+- CIS_TSS_SUSE15
 - ensure_tmp_is_configured
 - ensure_noexec_option_set_on_tmp_partition
 - ensure_nodev_option_set_on_tmp_partition
@@ -142,6 +143,7 @@ secure_linux_cis::server_level_1:
 - ensure_no_duplicate_group_names_exist
 - ensure_shadow_group_is_empty
 secure_linux_cis::server_level_2:
+- CIS_TSS_SUSE15
 - ensure_mounting_of_squashfs_filesystems_is_disabled
 - ensure_tmp_is_configured
 - ensure_noexec_option_set_on_tmp_partition
