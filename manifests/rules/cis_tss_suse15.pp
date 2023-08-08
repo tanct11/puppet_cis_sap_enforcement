@@ -112,11 +112,14 @@ class cis_tss_suse15 {
       path      => ['/usr/bin', '/usr/sbin',],
       logoutput => true,
       
-  #5.4.1.2 Ensure password expiration is 365 days or less
-    file_line{ 'minimum_days_between_password_change':
-      ensure => present,
-      path   => '/etc/login.defs',
-      line   => "PASS_MIN_DAYS 1",
+#5.4.1.3 Ensure minimum days between password changes is configured
+
+    file_line { 'ensure_minimum_days_between_password_changes_is_configured' :
+        ensure => present,
+        path   => '/etc/login.defs',
+        line   => 'PASS_MIN_DAYS 1',
+        match  => "^(PASS_MIN_DAYS.+)",
+  }
 
     exec { 'minimum_days_between_password_change' :
       command   => 'chage --mindays 1 <user>',
