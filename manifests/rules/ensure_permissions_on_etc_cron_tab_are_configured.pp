@@ -23,6 +23,6 @@ class secure_linux_cis::rules::ensure_permissions_on_etc_cron_tab_are_configured
     ensure => directory,
     group  => 'root',
     owner  => 'root',
-    mode   => 'og-rwx',
+    mode   => 'u-x,og-rwx',
   }
 }
