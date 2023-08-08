@@ -3,14 +3,11 @@
 # @summary Ensure permissions on SSH private host key files are configured 
 #
 class secure_linux_cis::rules::ensure_permissions_on_ssh_private_host_key_files_are_configured {
-  include secure_linux_cis::sshd_service
-
-  unless $facts['ssh_host_keys'].empty {
-    file { $facts['ssh_host_keys']:
-      ensure => 'file',
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0600',
+    exec { 'private_host_key_files'
+      command => 'find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chmod u-x,g-wx,o-rwx {} \;
+                  find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chown root:ssh_keys {} \;',
+      path      => ['/usr/bin', '/usr/sbin',],
+      logoutput => true,
     }
-  }
 }
+
