@@ -8,6 +8,6 @@ class secure_linux_cis::rules::ensure_permissions_on_etc_passwd_dash_are_configu
     ensure => file,
     owner  => 'root',
     group  => 'root',
-    mode   => $mode,
+    mode   => '0644',
   }
 }
