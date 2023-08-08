@@ -8,6 +8,5 @@ class secure_linux_cis::rules::ensure_permissions_on_etc_issue_net_are_configure
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => $secure_linux_cis::banner,
   }
 }
