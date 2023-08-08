@@ -20,10 +20,9 @@ class secure_linux_cis::rules::ensure_inactive_password_lock_is_30_days_or_less 
     line   => "INACTIVE=30",
     match  => '^#?INACTIVE=',
   }
-  # local_users fact may be undef
-  #$local_users = pick($facts['local_users'], {})
-  #$local_users.each |String $user, Hash $attributes| {
-  #  if $attributes['password_expires_days'] != 'never' and $attributes['password_expires_days'] != 'password must be changed' and $attributes['password_inactive_days'] != $secure_linux_cis::pass_inactive_days { #lint:ignore:140chars
-   #   exec { "/usr/bin/chage --inactive ${secure_linux_cis::pass_inactive_days} ${user}": }
-  # }
+    exec { 'set_to_30_days' :
+      command   => 'useradd -D -f 30',
+      path      => ['/usr/bin', '/usr/sbin',],
+      logoutput => true,
+}
 }
