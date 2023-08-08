@@ -35,3 +35,6 @@ mod 'puppet/augeasproviders_grub', '4.0.0'
 mod 'puppet/augeasproviders_shellvar', '5.0.0'
 mod 'puppetlabs/lvm', '1.4.0'
 mod 'puppetlabs/exec', '2.2.0'
+mod 'puppetlabs-firewall', '6.0.0'
+
+
