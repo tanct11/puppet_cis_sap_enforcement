@@ -1,4 +1,4 @@
-class secure_linux_cis::rules::cis_tss_suse15 {
+class cis_tss_suse15 {
 #1.1.1.2 Ensure mounting of udf filesystems is disabled
   file_line { 'Disable udf':
     ensure  => present,
@@ -86,10 +86,41 @@ class secure_linux_cis::rules::cis_tss_suse15 {
        line   => "*.* @@${secure_linux_cis::logging_host}", #enter P&G specific log host
        match  => '\*\.\* @@',
     }  
-    #5.2.4 Ensure SSH access is limited
+  #5.2.4 Ensure SSH access is limited
      file_line { 'ensure_ssh_access_is_limited':
-       ensure => 'abset,
+       ensure => 'absent',
        path   => '/etc/ssh/sshd_config',
-       match  => 'allow.+',
+       match  => 'allow.+/gi',
+       match_for_absence => true,
     }  
+
+    file_line { 'ensure_ssh_access_is_limited 2':
+       ensure => 'present',
+       path   => '/etc/ssh/sshd_config',
+       line => 'Add P&G policy for allowed users',
+    }  
+    
+  #5.4.1.2 Ensure password expiration is 365 days or less
+    file { 'password_expirationpolicy':
+      ensure => present,
+      path   => '/etc/login.defs',
+      content   => "PASS_MAX_DAYS 365",
+  }
+
+    exec { 'password_expirationpolicy 2' :
+      command   => 'change --maxdays 365 <user>',
+      path      => ['/usr/bin', '/usr/sbin',],
+      logoutput => true,
+      
+  #5.4.1.2 Ensure password expiration is 365 days or less
+    file_line{ 'minimum_days_between_password_change':
+      ensure => present,
+      path   => '/etc/login.defs',
+      line   => "PASS_MIN_DAYS 1",
+
+    exec { 'minimum_days_between_password_change' :
+      command   => 'chage --mindays 1 <user>',
+      path      => ['/usr/bin', '/usr/sbin',],
+      logoutput => true,
+  }
 }
