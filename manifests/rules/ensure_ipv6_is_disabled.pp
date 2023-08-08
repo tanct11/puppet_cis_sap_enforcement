@@ -11,12 +11,6 @@
 # @summary  Ensure IPv6 is disabled (Not Scored)
 #
 class secure_linux_cis::rules::ensure_ipv6_is_disabled {
-  unless $secure_linux_cis::ipv6_enabled {
-    if $facts['osfamily'] == 'RedHat' and $facts['os']['release']['major'] == '8' {
-      kernel_parameter { 'ipv6.disable=1':
-        ensure => present,
-      }
-    } else {
       sysctl { 'net.ipv6.conf.all.disable_ipv6':
         value    => 1,
       }
@@ -37,5 +31,4 @@ class secure_linux_cis::rules::ensure_ipv6_is_disabled {
         match => 'IPV6INIT=',
       }
     }
-  }
-}
+
