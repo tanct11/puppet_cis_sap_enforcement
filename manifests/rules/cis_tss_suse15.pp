@@ -62,7 +62,7 @@ class secure_linux_cis::rules::cis_tss_suse15 {
 
       file_line { 'ensure_filesystem_integrity_is_regularly_checked2':
         ensure  => present,
-        path    => '/etc/crontab',
+        path    => '/etc/crontab/cron_cis',
         line    => '0 5 * * * /usr/sbin/aide --check',
         }
 
@@ -76,14 +76,20 @@ class secure_linux_cis::rules::cis_tss_suse15 {
        ensure => present,
        path   => '/etc/audit/auditd.conf',
        line   => 'max_log_file_action = keep_logs',
-       match  => '^max_log_file_action',
+       match  => 'max_log_file_action.+',
   }
 
  #4.2.1.5 Ensure rsyslog is configured to send logs to a remote log host
      file_line { 'rsyslog.conf logging_host':
        ensure => present,
        path   => '/etc/rsyslog.conf',
-       line   => "*.* @@${secure_linux_cis::logging_host}",
+       line   => "*.* @@${secure_linux_cis::logging_host}", #enter P&G specific log host
        match  => '\*\.\* @@',
+    }  
+    #5.2.4 Ensure SSH access is limited
+     file_line { 'ensure_ssh_access_is_limited':
+       ensure => 'abset,
+       path   => '/etc/ssh/sshd_config',
+       match  => 'allow.+',
     }  
 }
