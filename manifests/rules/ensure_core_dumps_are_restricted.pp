@@ -11,7 +11,7 @@ class secure_linux_cis::rules::ensure_core_dumps_are_restricted {
   
   file_line { 'dumpable':
     ensure => present,
-    path  => '/etc/cis.hardening.conf',
+    path  => '/etc/sysctl.d/cis-hardening.conf',
     line  => 'fs.suid_dumpable = 0',
     match => '^fs.suid_dumpable',
   }
