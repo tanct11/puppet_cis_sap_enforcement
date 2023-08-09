@@ -3,13 +3,11 @@
 # @summary Ensure SSH LoginGraceTime is set to one minute or less 
 #
 class secure_linux_cis::rules::ensure_ssh_logingracetime_is_set_to_one_minute_or_less {
-  include secure_linux_cis::sshd_service
 
   file_line { 'ssh login grace time':
     ensure => 'present',
     path   => '/etc/ssh/sshd_config',
     line   => "LoginGraceTime 60",
     match  => '^#?LoginGraceTime',
-    notify => Class['secure_linux_cis::sshd_service'],
   }
 }
