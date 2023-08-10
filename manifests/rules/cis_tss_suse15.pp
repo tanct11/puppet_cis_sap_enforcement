@@ -111,6 +111,7 @@ class secure_linux_cis::rules::cis_tss_suse15 {
       command   => 'change --maxdays 365 <user>',
       path      => ['/usr/bin', '/usr/sbin',],
       logoutput => true,
+      }
       
 #5.4.1.3 Ensure minimum days between password changes is configured
 
