@@ -2,7 +2,7 @@
 #
 # @summary Ensure discretionary access control permission modification events are collected 
 #
-class secure_linux_cis::rules::ensure_discretionary_access_control_permission_modification_events_are_collected {
+class secure_linux_cis::rules::reboot_ensure_discretionary_access_control_permission_modification_events_are_collected {
     file_line { 'audit.rules access 1':
       ensure => present,
       path   => '/etc/audit/rules.d/cis_hardening.rules',
