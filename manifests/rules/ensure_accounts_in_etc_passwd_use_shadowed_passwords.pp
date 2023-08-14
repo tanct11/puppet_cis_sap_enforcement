@@ -8,4 +8,4 @@ class secure_linux_cis::rules::ensure_accounts_in_etc_passwd_use_shadowed_passwo
     path      => ['/usr/bin', '/usr/sbin',],
     logoutput => true,
   }
-}}
+}
