@@ -10,5 +10,6 @@ class secure_linux_cis::rules::ensure_tmp_is_configured {
     fstype => 'tmpfs',
     pass   => '0',
     target => '/etc/fstab',
+    options => 'defaults,rw,nosuid,nodev,noexec,relatime',
   }
 }
