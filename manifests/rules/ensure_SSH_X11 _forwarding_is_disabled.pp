@@ -3,7 +3,7 @@ class secure_linux_cis::rules::ensure_SSH_X11_forwarding_is_disabled {
                 ensure => present,
                 path   => '/etc/ssh/sshd_config',
                 line   => 'X11Forwarding no',
-                match  => 'X11Forwarding yes',
+                match  => "^(X11Forwarding.+$)",
                 replace_all_matches_not_matching_line => true,
   }
 }
