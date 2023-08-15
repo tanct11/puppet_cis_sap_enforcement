@@ -8,6 +8,9 @@ class secure_linux_cis::rules::ensure_dccp_is_disabled {
     ensure  => present,
     path    => '/etc/modprobe.d/dccp.conf',
     line    => 'install dccp /bin/true',
-    match   => '^install dccp/gi',
+    match   => '(?i)(^install dccp/)',
+    multiple => true,
+    replace_all_matches_not_matching_line => true,
+
   }
 }
