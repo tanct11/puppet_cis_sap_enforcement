@@ -18,7 +18,7 @@ exec { 'users_own_home_directory':
                         done',
         path      => ['/usr/bin', '/usr/sbin',],
         logoutput => true,
-        provider => ‘shell’,
+        provider => 'shell',
 
   }
 
