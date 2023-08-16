@@ -8,6 +8,8 @@ class secure_linux_cis::rules::ensure_ssh_ignorerhosts_is_enabled {
     ensure => present,
     path   => '/etc/ssh/sshd_config',
     line   => 'IgnoreRhosts yes',
-    match  => '^#?IgnoreRhosts',
+    match  => '(?i)^#?IgnoreRhosts',
+    multiple                              => true,
+    replace_all_matches_not_matching_line => true,
   }
 }
