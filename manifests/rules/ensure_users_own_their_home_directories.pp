@@ -5,7 +5,7 @@
 class secure_linux_cis::rules::ensure_users_own_their_home_directories {
 
 exec { 'users_own_home_directory':
-    command =>'grep -E -v \’^(halt|sync|shutdown)\’ /etc/passwd | awk -F: \’($7 != “\’”$(which nologin)”\’” && $7 != "/bin/false") { print $1 " " $6 }\’ | while read user dir; do
+    command =>'grep -E -v \'^(halt|sync|shutdown)\' /etc/passwd | awk -F: \'($7 != "\'"$(which nologin)"\'" && $7 != "/bin/false") { print $1 " " $6 }\' | while read user dir; do
                                 if [ ! -d "$dir" ]; then
                                         echo "The home directory ($dir) of user $user does not exist."
                                 else
