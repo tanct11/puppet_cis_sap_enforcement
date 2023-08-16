@@ -8,7 +8,8 @@ class secure_linux_cis::rules::ensure_ssh_permituserenvironment_is_disabled {
     ensure   => present,
     path     => '/etc/ssh/sshd_config',
     line     => 'PermitUserEnvironment no',
-    match    => '^\s*PermitUserEnvironment',
-    multiple => true,
-  }
+    match    => '(?i)^PermitUserEnvironment',
+    replace_all_matches_not_matching_line => true,
+    multiple                              => true,  
+    }
 }
