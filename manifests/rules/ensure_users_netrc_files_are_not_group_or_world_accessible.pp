@@ -3,17 +3,17 @@
 # @summary Ensure users' .netrc Files are not group or world accessible 
 #
 class secure_linux_cis::rules::ensure_users_netrc_files_are_not_group_or_world_accessible {
-  file { '/usr/share/cis_scripts/netrc_access.sh':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0700',
-    content => file('secure_linux_cis/netrc_access.sh'),
-  }
-  unless $facts[ 'netrc_access' ].empty {
-    notify { 'na':
-      message  => 'Not in compliance with CIS 3 (Scored). There are .netrc files that are either group or world accessible. Check the netrc_access fact for details',#lint:ignore:140chars
-      loglevel => 'warning',
-    }
-  }
+  #!/bin/bash 
+
+awk -F: '($1 !~ /^(root|halt|sync|shutdown)$/ && $7 != "'"$(which nologin)"'" && $7 != "/bin/false" && $7 != "/usr/bin/false") { print $1 " " $6 }' /etc/passwd | while read user dir; do
+        if [ ! -d "$dir" ]; then
+                echo "The home directory ($dir) of user $user does not exist." 
+        else
+                if [ ! -h "$dir/.netrc" -a -f "$dir/.netrc" ]; then
+                        echo ".netrc file $dir/.netrc exists" 
+                        echo "Apply actions according to company policy"
+                fi
+        fi
+done
+
 }
