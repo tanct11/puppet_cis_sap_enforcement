@@ -7,6 +7,6 @@ class secure_linux_cis::rules::ensure_ssh_loglevel_is_appropriate {
     ensure => present,
     path   => '/etc/ssh/sshd_config',
     line   => 'LogLevel INFO',
-    match  => '^LogLevel',
+    match  => '(?i)^LogLevel',
   }
 }
