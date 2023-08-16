@@ -9,5 +9,7 @@ class secure_linux_cis::rules::ensure_ssh_root_login_is_disabled {
     path   => '/etc/ssh/sshd_config',
     line   => 'PermitRootLogin no',
     match  => '(?i)^#?PermitRootLogin',
+    replace_all_matches_not_matching_line => true,
+    multiple                              => true,
   }
 }
