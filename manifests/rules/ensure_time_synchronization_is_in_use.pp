@@ -4,7 +4,7 @@
 #
 class secure_linux_cis::rules::ensure_time_synchronization_is_in_use {
  service { 'chrony':
-      ensure => installed,
+      ensure => running,
       enable => true,
     }
 }
