@@ -8,6 +8,6 @@ class secure_linux_cis::rules::ensure_ssh_warning_banner_is_configured {
     ensure => 'present',
     path   => '/etc/ssh/sshd_config',
     line   => 'Banner /etc/issue.net',
-    match  => '^#?Banner',
+    match  => '(?i)^#?Banner',
   }
 }
