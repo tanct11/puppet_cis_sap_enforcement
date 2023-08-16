@@ -8,6 +8,8 @@ class secure_linux_cis::rules::ensure_ssh_permitemptypasswords_is_disabled {
     ensure => 'present',
     path   => '/etc/ssh/sshd_config',
     line   => 'PermitEmptyPasswords no',
-    match  => '^\s*PermitEmptyPasswords',
+    match  => '(?i)^PermitEmptyPasswords',
+    replace_all_matches_not_matching_line => true,
+    multiple                              => true,
   }
 }
