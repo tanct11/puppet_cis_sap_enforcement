@@ -12,4 +12,10 @@ class secure_linux_cis::rules::ensure_tmp_is_configured {
     target => '/etc/fstab',
     options => 'defaults,rw,nosuid,nodev,noexec,relatime',
   }
+  exec { 'remount' :
+    command => 'mount -o remount,noexec,nodev,nosuid /tmp',
+    path      => ['/usr/bin', '/usr/sbin',],
+    logoutput => true,
+    provider => 'shell'
+    
 }
