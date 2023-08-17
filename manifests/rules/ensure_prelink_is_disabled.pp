@@ -12,3 +12,4 @@ class secure_linux_cis::rules::ensure_prelink_is_disabled {
       logoutput => true,
       
 }
+}
