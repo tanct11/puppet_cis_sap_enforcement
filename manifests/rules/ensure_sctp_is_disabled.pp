@@ -8,7 +8,8 @@ class secure_linux_cis::rules::ensure_sctp_is_disabled {
     ensure  => present,
     path    => '/etc/modprobe.d/storage_disable.conf',
     line    => 'install sctp /bin/true',
-    match   => '^install\s+sctp',
-    require => File['/etc/modprobe.d/storage_disable.conf'],
+    match   => '(?i)^install\s+sctp',
+    multiple                              => true,
+    replace_all_matches_not_matching_line => true,
   }
 }
