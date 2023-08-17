@@ -10,4 +10,7 @@ class secure_linux_cis::rules::ensure_source_routed_packets_are_not_accepted {
   sysctl { 'net.ipv4.conf.default.accept_source_route':
     value    => 0,
   }
+    sysctl { 'net.ipv4.route.flush':
+    value    => 1,
+  }
 }
